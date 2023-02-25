@@ -55,42 +55,47 @@ export abstract class PageRouter<T = any> {
      * @param field 
      * @param value 
      */
-    abstract set(field: "src", value: string): this;
+    set(field: "src", value: string): this;
 
     /**
      * Set out dir relative path
      * @param field 
      * @param value 
      */
-    abstract set(field: "out", value: string): this;
+    set(field: "out", value: string): this;
 
     /**
      * Set root dir absolute path
      * @param field 
      * @param value 
      */
-    abstract set(field: "root", value: string): this;
+    set(field: "root", value: string): this;
 
     /**
      * Set development mode
      * @param field 
      * @param value 
      */
-    abstract set(field: "dev", value: boolean): this;
+    set(field: "dev", value: boolean): this;
 
     /**
      * Set the router
      * @param field 
      * @param value 
      */
-    abstract set(field: "router", value: Router<T>): this;
+    set(field: "router", value: Router<T>): this;
 
     /**
      * Set a readonly property
      * @param field 
      * @param value 
      */
-    abstract set(field: string, value: any): this;
+    set(field: string, value: any) {
+        // @ts-ignore
+        this[field] = value;
+
+        return this;
+    };
 
     /**
      * Route a static page
